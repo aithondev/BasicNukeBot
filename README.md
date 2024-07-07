@@ -1,3 +1,3 @@
 ﻿# BasicNukeBot
 
- Token used in the commints is invalid btw :)
+ Token used in the commits is invalid btw :)
