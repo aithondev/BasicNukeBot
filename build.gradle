@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group = 'club.revived'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    shade
+    implementation.extendsFrom(shade)
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'club.revived.Main'
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from {
+        configurations.shade.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation("net.dv8tion:JDA:5.0.0-beta.24")
+    shade("net.dv8tion:JDA:5.0.0-beta.24")
+}
+
+test {
+    useJUnitPlatform()
+}
